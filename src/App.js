@@ -14,6 +14,7 @@ const App = () => {
                     <h1 className="relative text-4xl text-center font-bold m-0 p-6 uppercase drop-shadow text-white">
                         ⚔ Buildspace Game
                     </h1>
+                    <p className="relative text-white text-sm text-center">Contract: {process.env.REACT_APP_CONTRACT_ADDRESS}</p>
                 </div>
 
                 <div className="bg-purple-50 p-4">
