@@ -24,27 +24,37 @@ export default function useCharacter() {
 
     const getUsersCharacter = async () => {
         if (!gameContract) return;
-        if (!connectedWalletAddress) return;
         const character = await gameContract.checkIfUserHasNFT();
         setCharacter(transformCharacterData(character));
+    };
+
+    const getTokenId = async () => {
+        if (!connectedWalletAddress) return;
         const tokenId = await gameContract.holders(connectedWalletAddress);
         setTokenId(tokenId.toNumber());
     };
 
+    const onCharacterNFTMinted = async() => {
+        await getUsersCharacter();
+        await getTokenId();
+    };
+
     useEffect(() => {
         if (!gameContract) return;
-        gameContract.on('CharacterNFTMinted', getUsersCharacter);
+        gameContract.on('CharacterNFTMinted', onCharacterNFTMinted);
         return () => {
             if (!gameContract) return;
-            gameContract.off('CharacterNFTMinted', getUsersCharacter);
+            gameContract.off('CharacterNFTMinted', onCharacterNFTMinted);
         }
-    }, [gameContract, connectedWalletAddress]);
+    }, [gameContract]);
 
     useEffect(getUsersCharacter, [gameContract]);
+    useEffect(getTokenId, [connectedWalletAddress]);
 
     useEffect(() => {
+        if (!character) return;
         setHasCharacter(!!character?.name);
-    }, [character]);
+    });
 
     return [character, hasCharacter, tokenId];
 }

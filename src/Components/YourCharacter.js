@@ -1,4 +1,9 @@
+import useGameContract from "../Hooks/useGameContract";
+
 const YourCharacter = ({ character, tokenId }) => {
+    const [gameContract] = useGameContract();
+    if (!gameContract) return (<div>Loading game contract...</div>);
+
     return (
         <div className="mt-4 flex flex-col sm:flex-row rounded overflow-hidden text-left shadow">
             <img src={character.imageURI} alt={character.name} className="flex-shrink-1 p-3 mx-auto"/>
@@ -23,7 +28,7 @@ const YourCharacter = ({ character, tokenId }) => {
                     </dl>
                 </div>
                 <div className="p-4">
-                    <a href={`https://testnets.opensea.io/assets//${tokenId}`} className="text-purple-500 text-sm underline hover:no-underline">View on OpenSea</a>
+                    <a href={`https://testnets.opensea.io/assets/${gameContract.address}/${tokenId}`} className="text-purple-500 text-sm underline hover:no-underline">View on OpenSea</a>
                 </div>
             </div>
         </div>

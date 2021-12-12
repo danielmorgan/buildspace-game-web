@@ -27,14 +27,10 @@ const App = () => {
 
                 {isConnected && (
                     <div className="p-4">
-                        {/*{hasCharacter*/}
-                        {/*    ? <YourCharacter character={character} tokenId={tokenId}/>*/}
-                        {/*    : <SelectCharacter/>*/}
-                        {/*}*/}
-                        {hasCharacter && <YourCharacter character={character} tokenId={tokenId}/>}
-                        <div className="mt-4">
-                            <SelectCharacter/>
-                        </div>
+                        {hasCharacter
+                            ? <YourCharacter character={character} tokenId={tokenId}/>
+                            : <SelectCharacter/>
+                        }
                     </div>
                 )}
             </div>
