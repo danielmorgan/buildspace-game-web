@@ -2,14 +2,14 @@ import {useContext} from 'react';
 import {WalletContext} from '../Providers/Wallet';
 
 const Wallet = () => {
-    const { currentAccount, isConnected, connectWallet, disconnectWallet }  = useContext(WalletContext);
+    const { connectedWalletAddress, isConnected, connectWallet, disconnectWallet }  = useContext(WalletContext);
 
     if (isConnected) {
         return (
             <div>
                 <div className="text-lg font-bold text-gray-700">Connected to wallet</div>
                 <div className="flex flex-wrap items-center justify-between">
-                    <p className="text-gray-600 text-sm">{currentAccount}</p>
+                    <p className="text-gray-600 text-sm">{connectedWalletAddress}</p>
                     <a href="#" onClick={disconnectWallet} className="text-xs text-purple-500 underline hover:text-purple-400">Disconnect</a>
                 </div>
             </div>

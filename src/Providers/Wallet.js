@@ -4,13 +4,13 @@ import useWallet from '../Hooks/useWallet';
 export const WalletContext = createContext();
 
 export const WalletProvider = ({children}) => {
-    const [currentAccount, connectWallet, disconnectWallet] = useWallet();
+    const [connectedWalletAddress, connectWallet, disconnectWallet] = useWallet();
 
     const context = {
-        currentAccount,
+        connectedWalletAddress,
         connectWallet,
         disconnectWallet,
-        isConnected: !!currentAccount,
+        isConnected: !!connectedWalletAddress,
     };
 
     return <WalletContext.Provider value={context}>{children}</WalletContext.Provider>
