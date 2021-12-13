@@ -1,5 +1,6 @@
 {
   "name": "buildspace-game-web",
+  "homepage": "https://danielmorgan.github.io/buildspace-game-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
