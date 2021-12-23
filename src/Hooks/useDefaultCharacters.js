@@ -9,7 +9,7 @@ export default function useDefaultCharacters() {
         if (!gameContract) return;
         const defaultCharacters = await gameContract.getAllDefaultCharacters();
         setDefaultCharacters(defaultCharacters);
-    }, [gameContract]);
+    }, []);
 
     return [defaultCharacters];
 }

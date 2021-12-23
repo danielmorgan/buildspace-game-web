@@ -1,6 +1,5 @@
-import {useState, useEffect, useContext} from 'react';
+import {useState, useEffect} from 'react';
 import useGameContract from './useGameContract';
-import {WalletContext} from "../Providers/Wallet";
 import useWallet from "./useWallet";
 
 export default function useCharacter() {
@@ -34,9 +33,9 @@ export default function useCharacter() {
         setTokenId(tokenId.toNumber());
     };
 
-    const onCharacterNFTMinted = async() => {
+    const onCharacterNFTMinted = async(sender, tokenId, characterIndex) => {
+        setTokenId(tokenId.toNumber());
         await getUsersCharacter();
-        await getTokenId();
     };
 
     useEffect(() => {

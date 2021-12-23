@@ -4,7 +4,6 @@ import SelectCharacter from './Components/SelectCharacter';
 import {WalletContext} from './Providers/Wallet';
 import useCharacter from "./Hooks/useCharacter";
 import YourCharacter from "./Components/YourCharacter";
-import useGameContract from "./Hooks/useGameContract";
 
 const App = () => {
     const {isConnected} = useContext(WalletContext);
