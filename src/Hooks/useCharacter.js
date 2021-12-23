@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import useGameContract from './useGameContract';
 import useWallet from "./useWallet";
+import transformCharacterData from "../Utils/transformCharacterData";
 
 export default function useCharacter() {
     const [gameContract] = useGameContract();
@@ -9,17 +10,6 @@ export default function useCharacter() {
     const [character, setCharacter] = useState(null);
     const [hasCharacter, setHasCharacter] = useState(false);
     const [tokenId, setTokenId] = useState(0);
-
-    function transformCharacterData(characterData) {
-        return {
-            dexNumber: characterData.dexNumber,
-            name: characterData.name,
-            imageURI: characterData.imageURI,
-            hp: characterData.hp.toNumber(),
-            maxHp: characterData.maxHp.toNumber(),
-            attackDamage: characterData.attackDamage.toNumber(),
-        };
-    }
 
     const getUsersCharacter = async () => {
         if (!gameContract) return;
@@ -47,7 +37,7 @@ export default function useCharacter() {
         }
     }, [gameContract]);
 
-    useEffect(getUsersCharacter, [gameContract]);
+    useEffect(getUsersCharacter, [gameContract, connectedWalletAddress]);
     useEffect(getTokenId, [connectedWalletAddress]);
 
     useEffect(() => {
@@ -55,5 +45,5 @@ export default function useCharacter() {
         setHasCharacter(!!character?.name);
     });
 
-    return [character, hasCharacter, tokenId];
+    return {character, hasCharacter, tokenId};
 }

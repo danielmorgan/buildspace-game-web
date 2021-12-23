@@ -1,6 +1,6 @@
 import {ethers} from 'ethers';
 import {useState, useEffect} from 'react';
-import MyEpicGame from '../contracts/MyEpicGame.json';
+import MyEpicGame from '../Contracts/MyEpicGame.json';
 
 export default function useGameContract() {
     const [gameContract, setGameContract] = useState(null);

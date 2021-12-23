@@ -3,11 +3,11 @@ import Wallet from './Components/Wallet';
 import SelectCharacter from './Components/SelectCharacter';
 import {WalletContext} from './Providers/Wallet';
 import useCharacter from "./Hooks/useCharacter";
-import YourCharacter from "./Components/YourCharacter";
+import Arena from "./Components/Arena";
 
 const App = () => {
     const {isConnected} = useContext(WalletContext);
-    const [character, hasCharacter, tokenId] = useCharacter();
+    const {hasCharacter} = useCharacter();
 
     return (
         <div className="container mx-auto p-3 sm:p-8">
@@ -27,7 +27,7 @@ const App = () => {
                 {isConnected && (
                     <div className="p-4">
                         {hasCharacter
-                            ? <YourCharacter character={character} tokenId={tokenId}/>
+                            ? <Arena/>
                             : <SelectCharacter/>
                         }
                     </div>
