@@ -23,7 +23,7 @@ const Character = ({name, imageURI, tokenId, dexNumber, hp, maxHp, attackDamage,
                         <div className="p-1 pb-2">
                             <dd className="col-span-3 text-sm">
                                 <div className="relative shadow-lg shadow-inner rounded-full bg-white h-4 overflow-hidden">
-                                    <div className="bg-gradient-to-b from-cyan-300 to-green-500 h-full absolute inset-0" style={{
+                                    <div className="bg-gradient-to-b from-cyan-300 to-green-500 h-full absolute inset-0 transition-all duration-1000 ease-out delay-500" style={{
                                         width: `${(hp/maxHp)*100}%`
                                     }}/>
                                 </div>

@@ -45,5 +45,5 @@ export default function useCharacter() {
         setHasCharacter(!!character?.name);
     });
 
-    return {character, hasCharacter, tokenId};
+    return {character, hasCharacter, tokenId, setCharacter};
 }
